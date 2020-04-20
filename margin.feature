@@ -33,8 +33,8 @@ Feature: Margin Protocol
       | FJPY      | $1     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
-      | JPYUSD  | 1%    |
+      | EURUSD  | $0.02 |
+      | JPYUSD  | $0.01 |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -90,7 +90,7 @@ Feature: Margin Protocol
       | FEUR      | $3     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
+      | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10        | 1      |
@@ -114,8 +114,8 @@ Feature: Margin Protocol
       | Alice | 0  | $2    |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $9650  |
-    And margin liquidity is $5350
+      | Alice | $5000 | $9700  |
+    And margin liquidity is $5300
 
   Scenario: margin trader stop lost
     Given accounts
@@ -134,7 +134,7 @@ Feature: Margin Protocol
       | FEUR      | $3     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
+      | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10        | 1      |
@@ -158,8 +158,8 @@ Feature: Margin Protocol
       | Alice | 0  | $2    |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $3710  |
-    And margin liquidity is $11 290
+      | Alice | $5000 | $3700  |
+    And margin liquidity is $11 300
 
   Scenario: margin trader liquidate
     Given accounts
@@ -178,7 +178,7 @@ Feature: Margin Protocol
       | FEUR      | $3     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
+      | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10        | 1      |
@@ -217,7 +217,7 @@ Feature: Margin Protocol
       | Alice | Ok     |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $-745  |
+      | Alice | $5000 | $-800  |
     Then margin liquidity is $15000
 
   Scenario: margin liquidity pool liquidate
@@ -237,7 +237,7 @@ Feature: Margin Protocol
       | FEUR      | $3     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
+      | EURUSD  | $0.04 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10        | 1      |
@@ -299,8 +299,8 @@ Feature: Margin Protocol
       | FJPY      | $5     |
     And margin spread
       | Pair    | Value |
-      | EURUSD  | 1%    |
-      | JPYEUR  | 1%    |
+      | EURUSD  | $0.03 |
+      | JPYEUR  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10        | 1      |
@@ -334,8 +334,8 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin                 |
       | Alice | $1000 | $9000                  |
-      | BOB   | $1000 | 9996000000000000008400 |
-    And margin liquidity is 19003999999999999991600
+      | BOB   | $1000 | 9483999999999999999600 |
+    And margin liquidity is 19516000000000000000400
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.9   |
@@ -348,8 +348,8 @@ Feature: Margin Protocol
       | BOB   | EURUSD | Short 20 | $2000  | $2    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-      | Alice | $1000 | $8205                  |
-      | BOB   | $1000 | 9996000000000000008400 |
+      | Alice | $1000 | $8200                  |
+      | BOB   | $1000 | 9483999999999999999600 |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.8   |
@@ -360,6 +360,6 @@ Feature: Margin Protocol
       | BOB   | 3  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                  |
-      | Alice | $1000 | 8882935483870967742000  |
-      | BOB   | $1000 | 10082000000000000008400 |
-    And margin liquidity is 19035064516129032249600
+      | Alice | $1000 | 8806193548387096773600  |
+      | BOB   | $1000 | 9563999999999999999600 |
+    And margin liquidity is 19629806451612903226800
