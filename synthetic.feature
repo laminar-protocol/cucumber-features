@@ -28,7 +28,7 @@ Feature: Synthetic Protocol
       | FEUR     | 10%   |
     And synthetic set spread
       | Currency | Ratio |
-      | FEUR     | 1%    |
+      | FEUR     | $0.03 |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $3     |
@@ -63,7 +63,7 @@ Feature: Synthetic Protocol
       | FEUR     | 10%   |
     And synthetic set spread
       | Currency | Ratio |
-      | FEUR     | 1%    |
+      | FEUR     | $0.03 |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $3     |
@@ -83,9 +83,9 @@ Feature: Synthetic Protocol
       | Alice | FEUR     | 1650165016501650165016 |
     Then synthetic balances are
       | Name  | Free                    | Currency  | Synthetic |
-      | Alice | 10064356435643564356434 | FEUR      | 0         |
+      | Alice | 10066006600660066006599 | FEUR      | 0         |
     Then synthetic module balance is 0
-    Then synthetic liquidity is 9935643564356435643566
+    Then synthetic liquidity is 9933993399339933993401
 
   Scenario: Synthetic trader stop lost
     Given accounts
@@ -102,7 +102,7 @@ Feature: Synthetic Protocol
       | FEUR     | 10%   |
     And synthetic set spread
       | Currency | Ratio |
-      | FEUR     | 1%    |
+      | FEUR     | $0.03 |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $3     |
@@ -122,9 +122,9 @@ Feature: Synthetic Protocol
       | Alice | FEUR     | 1650165016501650165016 |
     Then synthetic balances are
       | Name  | Free                   | Currency  | Synthetic |
-      | Alice | 8267326732673267326731 | FEUR      | 0         |
+      | Alice | 8250825082508250825081 | FEUR      | 0         |
     Then synthetic module balance is 0
-    Then synthetic liquidity is 11732673267326732673269
+    Then synthetic liquidity is 11749174917491749174919
 
   Scenario: Synthetic multiple users multiple currencies
     Given accounts
@@ -142,8 +142,8 @@ Feature: Synthetic Protocol
       | FEUR     | 10%   |
     And synthetic set spread
       | Currency | Ratio |
-      | FEUR     | 1%    |
-      | FJPY     | 1%    |
+      | FEUR     | $0.03 |
+      | FJPY     | $0.04 |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $3     |
@@ -173,46 +173,46 @@ Feature: Synthetic Protocol
       | Alice | FJPY     | $2000  |
     Then synthetic balances are
       | Name  | Free  | Currency  | Synthetic             |
-      | Alice | $3000 | FJPY      | 396039603960396039603 |
-    Then synthetic liquidity is 38930693069306930693078
-    Then synthetic module balance is 13069306930693069306922
+      | Alice | $3000 | FJPY      | 396825396825396825396 |
+    Then synthetic liquidity is 38926371208549426371216
+    Then synthetic module balance is 13073628791450573628784
     When synthetic buy
       | Name  | Currency | Amount |
       | BOB   | FEUR     | $2000  |
     Then synthetic balances are
       | Name  | Free  | Currency  | Synthetic             |
-      | BOB   | $3000 | FEUR      | 990099009900990099009 |
-    Then synthetic module balance is 15247524752475247524742
-    Then synthetic liquidity is 38752475247524752475258
+      | BOB   | $3000 | FEUR      | 985221674876847290640 |
+    Then synthetic module balance is 15241116476179637668192
+    Then synthetic liquidity is 38758883523820362331808
     When synthetic sell
       | Name  | Currency | Amount |
       | Alice | FEUR     | $100  |
     Then synthetic balances are
       | Name  | Free                   | Currency  | Synthetic              |
-      | Alice | 3198000000000000000000 | FEUR      | 1550165016501650165016 |
-    Then synthetic module balance is 13212343234323432343224
-    Then synthetic liquidity is 40589656765676567656776
+      | Alice | 3197000000000000000000 | FEUR      | 1550165016501650165016 |
+    Then synthetic module balance is 13205934958027822486674
+    Then synthetic liquidity is 40597065041972177513326
     When synthetic sell
       | Name  | Currency | Amount |
       | BOB   | FJPY     | $100  |
     Then synthetic balances are
       | Name  | Free                   | Currency  | Synthetic              |
-      | BOB   | 3495000000000000000000 | FJPY      | 1137623762376237623762 |
-    Then synthetic module balance is 12717343234323432343224
-    Then synthetic liquidity is 40589656765676567656776
+      | BOB   | 3496000000000000000000 | FJPY      | 1137623762376237623762 |
+    Then synthetic module balance is 12709934958027822486674
+    Then synthetic liquidity is 40597065041972177513326
     When synthetic sell
       | Name  | Currency | Amount |
       | Alice | FJPY     | $100  |
     Then synthetic balances are
       | Name  | Free                   | Currency  | Synthetic             |
-      | Alice | 3693000000000000000000 | FJPY      | 296039603960396039603 |
-    Then synthetic module balance is 12222343234323432343224
-    Then synthetic liquidity is 40589656765676567656776
+      | Alice | 3693000000000000000000 | FJPY      | 296825396825396825396 |
+    Then synthetic module balance is 12213934958027822486674
+    Then synthetic liquidity is 40597065041972177513326
     When synthetic sell
       | Name  | Currency | Amount |
       | BOB   | FEUR     | $100  |
     Then synthetic balances are
       | Name  | Free                   | Currency  | Synthetic             |
-      | BOB   | 3693000000000000000000 | FEUR      | 890099009900990099009 |
-    Then synthetic module balance is 12002343234323432343224
-    Then synthetic liquidity is 40611656765676567656776
+      | BOB   | 3693000000000000000000 | FEUR      | 885221674876847290640 |
+    Then synthetic module balance is 11993934958027822486674
+    Then synthetic liquidity is 40620065041972177513326
