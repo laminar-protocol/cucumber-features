@@ -253,6 +253,7 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
+    And treasury balance is $0
     And oracle price
       | Currency  | Price  |
       | FEUR      | $4.1   |
@@ -277,7 +278,8 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $14600 |
-    Then margin liquidity is $0
+    And margin liquidity is $0
+    And treasury balance is $400
 
   Scenario: margin multiple users multiple currencies
     Given accounts
