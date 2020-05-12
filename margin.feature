@@ -278,8 +278,8 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $14600 |
-    And margin liquidity is $0
-    And treasury balance is $400
+    And margin liquidity is 399920000000000000000
+    And treasury balance is 80000000000000000
 
   Scenario: margin multiple users multiple currencies
     Given accounts
