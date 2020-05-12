@@ -217,7 +217,7 @@ Feature: Margin Protocol
       | Alice | Ok     |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $-800  |
+      | Alice | $5000 | $0     |
     Then margin liquidity is $15000
 
   Scenario: margin liquidity pool liquidate
