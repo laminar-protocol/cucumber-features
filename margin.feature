@@ -428,51 +428,52 @@ Feature: Margin Protocol
       | Alice | 0  | $2    |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $4750  |
-    Then margin liquidity is $10250
+      | Alice | $5000 | $4649  |
+    Then margin liquidity is $10351
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
-      | Alice | EURUSD | Short 10  | $5000 | $2    |
+      | Alice | EURUSD | Short 10 | $5000  | $2    |
     Then margin balances are
       | Name  | Free  | Margin |
-      | Alice | $5000 | $4750  |
+      | Alice | $5000 | $4649  |
     And margin execute block 9..22
     When close positions
       | Name  | ID | Price |
       | Alice | 1  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                |
-      | Alice | $5000 | 4448495000000000000000|
-    Then margin liquidity is 10551505000000000000000
+      | Name  | Free  | Margin                 |
+      | Alice | $5000 | 4751484900000000000000 |
+    Then margin liquidity is 10248515100000000000000
     And margin set additional swap 0.5%
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4448495000000000000000 |
+      | Alice | $5000 | 4751484900000000000000 |
     And margin execute block 22..32
     When close positions
       | Name  | ID | Price |
       | Alice | 2  | $2    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4171222425000000000000 |
-    Then margin liquidity is 10828777575000000000000
+      | Alice | $5000 | 4318121723500000000000 |
+    Then margin liquidity is 10681878276500000000000
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Short 10  | $5000 | $2    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4171222425000000000000 |
+      | Alice | $5000 | 4318121723500000000000 |
     And margin execute block 32..42
     When close positions
       | Name  | ID | Price |
       | Alice | 3  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-      | Alice | $5000 | 3945336112375000000000 |
-    Then margin liquidity is 11054663887625000000000
+
+      | Alice | $5000 | 4195262935122500000000 |
+    Then margin liquidity is 10804737064877500000000
 
    Scenario: margin risk thresholds
      Given accounts
