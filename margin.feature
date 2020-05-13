@@ -43,6 +43,10 @@ Feature: Margin Protocol
     | JPYUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | JPYUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -315,6 +319,10 @@ Feature: Margin Protocol
       | JPYEUR  | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYEUR
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | JPYEUR  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -393,6 +401,9 @@ Feature: Margin Protocol
       | Pair    | Long | Short |
       | EURUSD  | -1%  | 1%    |
     And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -450,3 +461,83 @@ Feature: Margin Protocol
       | Name  | Free  | Margin                 |
       | Alice | $5000 | 3945336112375000000000 |
     Then margin liquidity is 11054663887625000000000
+
+   Scenario: margin risk thresholds
+     Given accounts
+       | Name  | Amount  |
+       | Pool  | $10 000 |
+       | Alice | $10 000 |
+     And margin create liquidity pool
+     And margin deposit liquidity
+       | Name  | Amount  |
+       | Pool  | $10 000 |
+     And margin deposit
+       | Name  | Amount  |
+       | Alice | $5 000  |
+     And oracle price
+       | Currency  | Price  |
+       | FEUR      | $3     |
+     And margin spread
+       | Pair    | Value |
+       | EURUSD  | $0.04 |
+     And margin set accumulate
+       | Pair   | Frequency | Offset |
+       | EURUSD | 10        | 1      |
+     And margin set min leveraged amount to $100
+     And margin set default min leveraged amount to $100
+     And margin set swap rate
+       | Pair    | Long | Short |
+       | EURUSD  | -1%  | 1%    |
+     And margin enable trading pair EURUSD
+     And margin set risk threshold(margin_call, stop_out)
+       | Pair    | Trader   | ENP        | ELL        |
+       | EURUSD  | (8%, 5%) | (50%, 30%) | (50%, 30%) |
+     When open positions
+       | Name  | Pair   | Leverage | Amount | Price |
+       | Alice | EURUSD | Long 10  | $5000  | $4    |
+     Then margin balances are
+       | Name  | Free  | Margin |
+       | Alice | $5000 | $5000  |
+     And treasury balance is $0
+     And oracle price
+       | Currency  | Price  |
+       | FEUR      | $2.3   |
+     And margin trader margin call
+       | Name  | Result |
+       | Alice | Ok     |
+     And margin trader liquidate
+       | Name  | Result                  |
+       | Alice | NotReachedRiskThreshold |
+     And margin trader become safe
+       | Name  | Result       |
+       | Alice | UnsafeTrader |
+     And margin set risk threshold(margin_call, stop_out)
+       | Pair    | Trader   | ENP        | ELL        |
+       | EURUSD  | (5%, 3%) | (50%, 30%) | (50%, 30%) |
+     And margin trader become safe
+       | Name  | Result |
+       | Alice | Ok     |
+     And oracle price
+       | Currency  | Price  |
+       | FEUR      | $3.6   |
+     And margin liquidity pool margin call
+       | Result |
+       | Ok     |
+     And margin liquidity pool liquidate
+       | Result                  |
+       | NotReachedRiskThreshold |
+     And margin liquidity pool become safe
+       | Result     |
+       | UnsafePool |
+     And margin set risk threshold(margin_call, stop_out)
+       | Pair    | Trader   | ENP        | ELL        |
+       | EURUSD  | (5%, 3%) | (40%, 30%) | (50%, 30%) |
+     And margin liquidity pool become safe
+       | Result     |
+       | UnsafePool |
+     And margin set risk threshold(margin_call, stop_out)
+       | Pair    | Trader   | ENP        | ELL        |
+       | EURUSD  | (5%, 3%) | (40%, 30%) | (40%, 30%) |
+     And margin liquidity pool become safe
+       | Result |
+       | Ok     |
