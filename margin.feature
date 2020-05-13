@@ -104,6 +104,9 @@ Feature: Margin Protocol
       | Pair    | Long | Short |
       | EURUSD  | -1%  | 1%    |
     And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -148,6 +151,9 @@ Feature: Margin Protocol
       | Pair    | Long | Short |
       | EURUSD  | -1%  | 1%    |
     And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -192,6 +198,9 @@ Feature: Margin Protocol
       | Pair    | Long | Short |
       | EURUSD  | -1%  | 1%    |
     And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -251,6 +260,9 @@ Feature: Margin Protocol
       | Pair    | Long | Short |
       | EURUSD  | -1%  | 1%    |
     And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
