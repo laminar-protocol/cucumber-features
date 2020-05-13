@@ -38,9 +38,9 @@ Feature: Margin Protocol
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-    | Pair   | Long | Short |
-    | EURUSD | -1%  | 1%    |
-    | JPYUSD | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
+      | JPYUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYUSD
     And margin set risk threshold(margin_call, stop_out)
@@ -381,7 +381,7 @@ Feature: Margin Protocol
       | Alice | 2  | $1    |
       | BOB   | 3  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                  |
+      | Name  | Free  | Margin                 |
       | Alice | $1000 | 8806193548387096773600 |
       | BOB   | $1000 | 9563999999999999999600 |
     And margin liquidity is 19629806451612903226800
@@ -471,7 +471,6 @@ Feature: Margin Protocol
       | Alice | 3  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                 |
-
       | Alice | $5000 | 4195262935122500000000 |
     Then margin liquidity is 10804737064877500000000
 
