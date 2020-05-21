@@ -40,8 +40,8 @@ Feature: Synthetic Protocol
       | Alice | $5000 | FEUR      | 1650_165016501650165016 |
     Then synthetic liquidity is 9554_455445544554455447
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
     Then synthetic module balance is 5445_544554455445544553
     When synthetic sell
       | Name  | Currency | Amount |
@@ -51,8 +51,8 @@ Feature: Synthetic Protocol
       | Alice | $7376 | FEUR      | 8501_65016501650165016 |
     Then synthetic liquidity is 9818_455445544554455447
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
 
   Scenario: Synthetic trader take profit
     Given accounts
@@ -81,8 +81,8 @@ Feature: Synthetic Protocol
       | Alice | $5000 | FEUR      | 1650_165016501650165016 |
     Then synthetic liquidity is 9554_455445544554455447
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
     Then synthetic module balance is 5445_544554455445544553
     And oracle price
       | Currency  | Price  |
@@ -126,8 +126,8 @@ Feature: Synthetic Protocol
       | Alice | $5000 | FEUR      | 1650_165016501650165016 |
     Then synthetic liquidity is 9554_455445544554455447
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
     Then synthetic module balance is 5445_544554455445544553
     And oracle price
       | Currency  | Price |
@@ -174,9 +174,9 @@ Feature: Synthetic Protocol
       | Alice | $5000 | FEUR      | 1650_165016501650165016 |
     Then synthetic liquidity is 3955_4455445544554455447
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
-      | FJPY      | 0                   | false   |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
+      | FJPY      | 0                    | false   |
     Then synthetic module balance is 5445_544554455445544553
     When synthetic buy
       | Name  | Currency | Amount |
@@ -186,9 +186,9 @@ Feature: Synthetic Protocol
       | BOB   | $5000 | FJPY      | 1237_623762376237623762 |
     Then synthetic liquidity is 3910_8910891089108910894
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1100000000000000000 | true    |
-      | FJPY      | 1100000000000000000 | true    |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_100000000000000000 | true    |
+      | FJPY      | 1_100000000000000000 | true    |
     Then synthetic module balance is 10891_089108910891089106
     And oracle price
       | Currency  | Price |
@@ -202,9 +202,9 @@ Feature: Synthetic Protocol
       | Alice | $3000 | FJPY      | 3968_25396825396825396 |
     Then synthetic liquidity is 3892_6371208549426371216
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1650000000000000000 | true    |
-      | FJPY      | 933413461538461538  | false   |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_650000000000000000 | true    |
+      | FJPY      | 0_933413461538461538 | false   |
     Then synthetic module balance is 13073_628791450573628784
     When synthetic buy
       | Name  | Currency | Amount |
@@ -215,9 +215,9 @@ Feature: Synthetic Protocol
     Then synthetic module balance is 1524_1116476179637668192
     Then synthetic liquidity is 3875_8883523820362331808
     Then synthetic pool info are
-      | Currency | Collateral Ratio    | Is Safe |
-      | FEUR     | 1444386181369524984 | true    |
-      | FJPY     | 933413461538461538  | false   |
+      | Currency | Collateral Ratio     | Is Safe |
+      | FEUR     | 1_444386181369524984 | true    |
+      | FJPY     | 0_933413461538461538 | false   |
     When synthetic sell
       | Name  | Currency | Amount |
       | Alice | FEUR     | $100  |
@@ -227,9 +227,9 @@ Feature: Synthetic Protocol
     Then synthetic module balance is 1320_5934958027822486674
     Then synthetic liquidity is 4059_7065041972177513326
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1099999999999999999 | true    |
-      | FJPY      | 933413461538461538  | false   |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_099999999999999999 | true    |
+      | FJPY      | 0_933413461538461538 | false   |
     When synthetic sell
       | Name  | Currency | Amount |
       | BOB   | FJPY     | $100  |
@@ -239,9 +239,9 @@ Feature: Synthetic Protocol
     Then synthetic module balance is 1270_9934958027822486674
     Then synthetic liquidity is 4059_7065041972177513326
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1099999999999999999 | true    |
-      | FJPY      | 929595378801069266  | false |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_099999999999999999 | true    |
+      | FJPY      | 0_929595378801069266 | false |
     When synthetic sell
       | Name  | Currency | Amount |
       | Alice | FJPY     | $100  |
@@ -251,9 +251,9 @@ Feature: Synthetic Protocol
     Then synthetic module balance is 1221_3934958027822486674
     Then synthetic liquidity is 4059_7065041972177513326
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1099999999999999999 | true    |
-      | FJPY      | 925244954751626969  | false   |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_099999999999999999 | true    |
+      | FJPY      | 0_925244954751626969 | false   |
     When synthetic sell
       | Name  | Currency | Amount |
       | BOB   | FEUR     | $100  |
@@ -263,6 +263,6 @@ Feature: Synthetic Protocol
     Then synthetic module balance is 1199_3934958027822486674
     Then synthetic liquidity is 4062_0065041972177513326
     Then synthetic pool info are
-      | Currency  | Collateral Ratio    | Is Safe |
-      | FEUR      | 1099999999999999999 | true    |
-      | FJPY      | 925244954751626969  | false   |
+      | Currency  | Collateral Ratio     | Is Safe |
+      | FEUR      | 1_099999999999999999 | true    |
+      | FJPY      | 0_925244954751626969 | false   |
