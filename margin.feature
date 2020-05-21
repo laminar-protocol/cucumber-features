@@ -376,8 +376,8 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
-    And margin liquidity is 399920000000000000000
-    And treasury balance is 80000000000000000
+    And margin liquidity is 399_920000000000000000
+    And treasury balance is   0_080000000000000000
 
   Scenario: margin multiple users multiple currencies
     Given accounts
@@ -443,9 +443,9 @@ Feature: Margin Protocol
       | Name  | ID | Price |
       | BOB   | 1  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $1000 | $9000                  |
-      | BOB   | $1000 | 9483999999999999999600 |
+      | Name  | Free  | Margin                  |
+      | Alice | $1000 | $9000                   |
+      | BOB   | $1000 | 9483_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                 | Margin Held            | Margin Level       | Free Margin            | Unrealized PL |
       | Alice | $9014                  | 1764649999999999999900 | 447500372337784838 | 7249350000000000000100 | $14           |
@@ -453,7 +453,7 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP                | ELL                | Required Deposit |
       | 968177530655810951 | 968177530655810951 | 0                |
-    And margin liquidity is 19516000000000000000400
+    And margin liquidity is 19516_000000000000000400
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.9   |
@@ -465,9 +465,9 @@ Feature: Margin Protocol
       | Name  | Pair   | Leverage | Amount | Price |
       | BOB   | EURUSD | Short 20 | $2000  | $2    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $1000 | $8200                  |
-      | BOB   | $1000 | 9483999999999999999600 |
+      | Name  | Free  | Margin                  |
+      | Alice | $1000 | $8200                   |
+      | BOB   | $1000 | 9483_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                 | Margin Held           | Margin Level        | Free Margin            | Unrealized PL         |
       | Alice | 8542129032258064515700 | 249649999999999999900 | 1710820955789718509 | 8292479032258064515800 | 342129032258064515700 |
@@ -484,9 +484,9 @@ Feature: Margin Protocol
       | Alice | 2  | $1    |
       | BOB   | 3  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $1000 | 8806193548387096773600 |
-      | BOB   | $1000 | 9563999999999999999600 |
+      | Name  | Free  | Margin                  |
+      | Alice | $1000 | 8806_193548387096773600 |
+      | BOB   | $1000 | 9563_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                 | Margin Held | Margin Level | Free Margin            | Unrealized PL |
       | Alice | 8806193548387096773600 | 0           | MaxValue     | 8806193548387096773600 | 0             |
@@ -494,7 +494,7 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
-    And margin liquidity is 19629806451612903226800
+    And margin liquidity is 19629_806451612903226800
 
   Scenario: margin accumulate swap
     Given accounts
@@ -551,38 +551,38 @@ Feature: Margin Protocol
       | Name  | ID | Price |
       | Alice | 1  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4751484900000000000000 |
-    Then margin liquidity is 10248515100000000000000
+      | Name  | Free  | Margin                  |
+      | Alice | $5000 | 4751_484900000000000000 |
+    Then margin liquidity is 10248_515100000000000000
     And margin set additional swap 0.5%
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4751484900000000000000 |
+      | Name  | Free  | Margin                  |
+      | Alice | $5000 | 4751_484900000000000000 |
     And margin execute block 22..32
     When close positions
       | Name  | ID | Price |
       | Alice | 2  | $2    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4318121723500000000000 |
-    Then margin liquidity is 10681878276500000000000
+      | Name  | Free  | Margin                  |
+      | Alice | $5000 | 4395_131571745000000000 |
+    Then margin liquidity is 10604_868428255000000000
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Short 10  | $5000 | $2    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4318121723500000000000 |
+      | Name  | Free  | Margin                  |
+      | Alice | $5000 | 4395_131571745000000000 |
     And margin execute block 32..42
     When close positions
       | Name  | ID | Price |
       | Alice | 3  | $4    |
     Then margin balances are
-      | Name  | Free  | Margin                 |
-      | Alice | $5000 | 4195262935122500000000 |
-    Then margin liquidity is 10804737064877500000000
+      | Name  | Free  | Margin                  |
+      | Alice | $5000 | 4349_398681883812250000 |
+    Then margin liquidity is 10650_601318116187750000
 
   Scenario: margin risk thresholds
     Given accounts
