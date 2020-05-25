@@ -107,7 +107,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -166,7 +166,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -225,7 +225,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -311,7 +311,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.04 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -403,8 +403,8 @@ Feature: Margin Protocol
       | JPYEUR  | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
-      | JPYEUR | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
+      | JPYEUR | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -516,7 +516,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.02 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -532,7 +532,7 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
-    And margin execute block 1..9
+    And margin execute time 1min..9min
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $2    |
@@ -546,7 +546,7 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $4649  |
-    And margin execute block 9..22
+    And margin execute time 9min..22min
     When close positions
       | Name  | ID | Price |
       | Alice | 1  | $4    |
@@ -561,7 +561,7 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $5000 | $4747  |
-    And margin execute block 22..32
+    And margin execute time 22min..32min
     When close positions
       | Name  | ID | Price |
       | Alice | 2  | $2    |
@@ -575,7 +575,7 @@ Feature: Margin Protocol
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $5000 | 4395_245000000000000000 |
-    And margin execute block 32..42
+    And margin execute time 32min..42min
     When close positions
       | Name  | ID | Price |
       | Alice | 3  | $4    |
@@ -604,7 +604,7 @@ Feature: Margin Protocol
       | EURUSD  | $0.04 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
-      | EURUSD | 10        | 1      |
+      | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
