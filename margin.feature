@@ -57,11 +57,11 @@ Feature: Margin Protocol
       | Bob   | $5000 | $5000  |
     Then margin trader info are
       | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4800   | $1010       | 0_475247524752475247 | $3790       | $-200         |
+      | Alice | $4800   | $1010       | 0_475247524752475248 | $3790       | $-200         |
       | Bob   | $4900   | $101        | 0_970297029702970297 | $4799       | $-100         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_679867986798679867 | 0_679867986798679867 | 0                |
+      | 0_679867986798679868 | 0_679867986798679868 | 0                |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $0    |
@@ -128,7 +128,7 @@ Feature: Margin Protocol
       | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_679867986798679867 | 0_679867986798679867 | 0                |
+      | 0_679867986798679868 | 0_679867986798679868 | 0                |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $4     |
@@ -187,7 +187,7 @@ Feature: Margin Protocol
       | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_679867986798679867 | 0_679867986798679867 | 0                |
+      | 0_679867986798679868 | 0_679867986798679868 | 0                |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.8   |
@@ -246,7 +246,7 @@ Feature: Margin Protocol
       | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_679867986798679867 | 0_679867986798679867 | 0                |
+      | 0_679867986798679868 | 0_679867986798679868 | 0                |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.2   |
@@ -261,7 +261,7 @@ Feature: Margin Protocol
       | Alice | $200   | $1515       | 0_013201320132013201 | $-1315      | $-4800        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_976897689768976897 | 0_976897689768976897 | 0                |
+      | 0_976897689768976898 | 0_976897689768976898 | 0                |
     And margin trader margin call
       | Name  | Result |
       | Alice | Ok     |
@@ -331,18 +331,18 @@ Feature: Margin Protocol
       | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
       | Alice | $4600   | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
-      | ENP                | ELL                | Required Deposit |
-      | 0_684210526315789473 | 0_684210526315789473 | 0                |
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_684210526315789474 | 0_684210526315789474 | 0                |
     And treasury balance is $0
     And oracle price
       | Currency  | Price  |
       | FEUR      | $4.1   |
     Then margin trader info are
       | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $10100 | $1520       | 0_664473684210526315 | $8580       | $5100         |
+      | Alice | $10100 | $1520       | 0_664473684210526316 | $8580       | $5100         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_322368421052631578 | 0_322368421052631578 | 0                |
+      | 0_322368421052631579 | 0_322368421052631579 | 0                |
     And margin liquidity pool margin call
       | Result   |
       | SafePool |
@@ -362,8 +362,8 @@ Feature: Margin Protocol
       | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
       | Alice | $14600 | $1520       | 0_960526315789473684 | $13080      | $9600         |
     Then margin pool info are
-      | ENP                 | ELL                 | Required Deposit |
-      | 0_026315789473684210 | 0_026315789473684210 | $4160            |
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_026315789473684211 | 0_026315789473684211 | $4160            |
     And margin liquidity pool liquidate
       | Result |
       | Ok     |
@@ -625,17 +625,17 @@ Feature: Margin Protocol
       | Alice | $4600   | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_684210526315789473 | 0_684210526315789473 | 0                |
+      | 0_684210526315789474 | 0_684210526315789474 | 0                |
     And treasury balance is $0
     And oracle price
       | Currency  | Price  |
       | FEUR      | $2.3   |
     Then margin trader info are
       | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL  |
-      | Alice | $1100   | $1520       | 0_072368421052631578 | $-420       | $-3900         |
+      | Alice | $1100   | $1520       | 0_072368421052631579 | $-420       | $-3900         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_914473684210526315 | 0_914473684210526315 | 0                |
+      | 0_914473684210526316 | 0_914473684210526316 | 0                |
     And margin trader margin call
       | Name  | Result |
       | Alice | Ok     |
@@ -659,7 +659,7 @@ Feature: Margin Protocol
       | Alice | $7600   | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_486842105263157894 | 0_486842105263157894 | $200             |
+      | 0_486842105263157895 | 0_486842105263157895 | $200             |
     And margin liquidity pool margin call
       | Result |
       | Ok     |
@@ -686,4 +686,4 @@ Feature: Margin Protocol
       | Alice | $7600   | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_486842105263157894 | 0_486842105263157894 | 0                |
+      | 0_486842105263157895 | 0_486842105263157895 | 0                |
