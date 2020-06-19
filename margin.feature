@@ -687,3 +687,73 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_411111111111111111 | 0_411111111111111111 | 0                |
+
+Scenario: margin trader owning and repayment
+    Given accounts
+      | Name  | Amount  |
+      | Pool  | $10 000 |
+      | Alice | $10 000 |
+    And margin create liquidity pool
+    And margin deposit liquidity
+      | Name  | Amount  |
+      | Pool  | $10 000 |
+    And margin deposit
+      | Name  | Amount  |
+      | Alice |  $5000  |
+    And oracle price
+      | Currency  | Price  |
+      | FEUR      | $3     |
+      | FJPY      | $3     |
+    And margin spread
+      | Pair    | Value |
+      | EURUSD  | $0.03 |
+      | JPYUSD  | $0.03 |
+    And margin set accumulate
+      | Pair   | Frequency | Offset |
+      | EURUSD | 10min     | 1min   |
+      | JPYUSD | 10min     | 1min   |
+    And margin set min leveraged amount to $100
+    And margin set default min leveraged amount to $100
+    And margin set swap rate
+      | Pair    | Long | Short |
+      | EURUSD  | -1%  | 1%    |
+      | JPYUSD  | -1%  | 1%    |
+    And margin enable trading pair EURUSD
+    And margin enable trading pair JPYUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair    | Trader   | ENP        | ELL        |
+      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+    When open positions
+      | Name  | Pair   | Leverage | Amount | Price |
+      | Alice | EURUSD | Long 10  | $5000  | $4    |
+      | Alice | JPYUSD | Long 10  | $5000  | $4    |
+    Then margin balances are
+      | Name  | Free  | Margin |
+      | Alice | $5000 | $5000  |
+    Then margin trader info are
+      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4400   | $3030       | 0_145214521452145215 | $1370       | $-600         |
+    Then margin pool info are
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_353333333333333333 | 0_353333333333333333 | 0                |
+    And oracle price
+      | Currency  | Price  |
+      | FEUR      | $2     |
+      | FJPY      | $4     |
+    When close positions
+      | Name  | ID | Price |
+      | Alice | 0  | $1    |
+    Then margin balances are
+      | Name  | Free  | Margin |
+      | Alice | $5000 | $-300  |
+    And margin liquidity is $15_000
+    Then margin trader info are
+      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4400   | $1515       | 0_290429042904290429 | $2885       | $4700         |
+    When close positions
+      | Name  | ID | Price |
+      | Alice | 1  | $3    |
+    Then margin balances are
+      | Name  | Free  | Margin |
+      | Alice | $5000 | $4400  |
+    And margin liquidity is $10_600
