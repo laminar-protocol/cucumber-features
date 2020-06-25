@@ -372,7 +372,7 @@ Feature: Margin Protocol
       | Alice | $5000 | $14600 |
     Then margin trader info are
       | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
-      | Alice | $14600 | $0          | Max_Value    | $14600      | $0            |
+      | Alice | $14600 | $0          | MaxValue     | $14600      | $0            |
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
