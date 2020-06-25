@@ -392,7 +392,7 @@ Feature: Margin Protocol
     And margin deposit
       | Name  | Amount  |
       | Alice | $9 000  |
-      | BOB   | $9 000  |
+      | Bob   | $9 000  |
     And oracle price
       | Currency  | Price  |
       | FEUR      | $3     |
@@ -420,11 +420,11 @@ Feature: Margin Protocol
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
-      | BOB   | JPYEUR | Short 10 | $6000  | $1    |
+      | Bob   | JPYEUR | Short 10 | $6000  | $1    |
     Then margin balances are
       | Name  | Free  | Margin |
       | Alice | $1000 | $9000  |
-      | BOB   | $1000 | $9000  |
+      | Bob   | $1000 | $9000  |
     Then margin trader info are
       | Name  | Equity  | Margin Held             | Margin Level         | Free Margin             | Unrealized PL |
       | Alice | $8700   | $1515                   | 0_574257425742574257 | $7185                   | $-300         |
@@ -441,11 +441,11 @@ Feature: Margin Protocol
       | Alice | JPYEUR | Long 20  | $1000  | $4    |
     When close positions
       | Name  | ID | Price |
-      | BOB   | 1  | $4    |
+      | Bob   | 1  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $1000 | $9000                   |
-      | BOB   | $1000 | 9483_999999999999999600 |
+      | Bob   | $1000 | 9483_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                  | Margin Held             | Margin Level         | Free Margin             | Unrealized PL |
       | Alice | $9014                   | 1764_649999999999999900 | 0_447500372337784838 | 7249_350000000000000100 | $14           |
@@ -463,11 +463,11 @@ Feature: Margin Protocol
       | Alice | 0  | $2    |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
-      | BOB   | EURUSD | Short 20 | $2000  | $2    |
+      | Bob   | EURUSD | Short 20 | $2000  | $2    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $1000 | $8200                   |
-      | BOB   | $1000 | 9483_999999999999999600 |
+      | Bob   | $1000 | 9483_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                  | Margin Held            | Margin Level         | Free Margin             | Unrealized PL          |
       | Alice | 8542_129032258064515700 | 249_649999999999999900 | 1_828808607913147372 | 8292_479032258064515800 | 342_129032258064515700 |
@@ -482,11 +482,11 @@ Feature: Margin Protocol
     When close positions
       | Name  | ID | Price |
       | Alice | 2  | $1    |
-      | BOB   | 3  | $4    |
+      | Bob   | 3  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $1000 | 8806_193548387096773600 |
-      | BOB   | $1000 | 9563_999999999999999600 |
+      | Bob   | $1000 | 9563_999999999999999600 |
     Then margin trader info are
       | Name  | Equity                  | Margin Held | Margin Level | Free Margin             | Unrealized PL |
       | Alice | 8806_193548387096773600 | 0           | MaxValue     | 8806_193548387096773600 | 0             |
