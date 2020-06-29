@@ -376,8 +376,8 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
-    And margin liquidity is 399_920000000000000000
-    And treasury balance is   0_080000000000000000
+    And margin liquidity is 0
+    And treasury balance is 400_000000000000000000
 
   Scenario: margin multiple users multiple currencies
     Given accounts
