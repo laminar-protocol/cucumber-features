@@ -554,7 +554,7 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $4747  |
     Then margin liquidity is $10253
-    And margin set additional swap 0.5%
+    And margin set additional swap 0.5% for EURUSD
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
