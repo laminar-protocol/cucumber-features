@@ -519,10 +519,10 @@ Feature: Margin Protocol
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
+    And margin enable trading pair EURUSD
     And margin set swap rate
       | Pair   | Long | Short |
       | EURUSD | -1%  | 1%    |
-    And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
       | Pair   | Trader   | ENP        | ELL        |
       | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
