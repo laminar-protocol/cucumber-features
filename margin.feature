@@ -61,7 +61,7 @@ Feature: Margin Protocol
       | Bob   | $4900  | $101        | 0_970297029702970297 | $4799       | $-100         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_686666666666666667 | 0_686666666666666667 | 0                |
+      | 0_679867986798679867 | 0_679867986798679867 | 0                |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $0    |
@@ -128,7 +128,7 @@ Feature: Margin Protocol
       | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_686666666666666667 | 0_686666666666666667 | 0                |
+      | 0_679867986798679867 | 0_679867986798679867 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $4    |
@@ -187,7 +187,7 @@ Feature: Margin Protocol
       | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_686666666666666667 | 0_686666666666666667 | 0                |
+      | 0_679867986798679867 | 0_679867986798679867 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $2.8  |
@@ -246,7 +246,7 @@ Feature: Margin Protocol
       | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_686666666666666667 | 0_686666666666666667 | 0                |
+      | 0_679867986798679867 | 0_679867986798679867 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $2.2  |
@@ -261,7 +261,7 @@ Feature: Margin Protocol
       | Alice | $200   | $1515       | 0_013201320132013201 | $-1315      | $-4800        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 1_409523809523809524 | 1_409523809523809524 | 0                |
+      | 0_976897689768976897 | 0_976897689768976897 | 0                |
     And margin trader margin call
       | Name  | Result |
       | Alice | Ok     |
@@ -276,7 +276,7 @@ Feature: Margin Protocol
       | Alice | $-800  | $1515       | -0_052805280528052805 | $-2315      | $-5800        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 1_663157894736842105 | 1_663157894736842105 | 0                |
+      | 1_042904290429042904 | 1_042904290429042904 | 0                |
     And margin trader liquidate
       | Name  | Result |
       | Alice | Ok     |
@@ -332,7 +332,7 @@ Feature: Margin Protocol
       | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_693333333333333333 | 0_693333333333333333 | 0                |
+      | 0_684210526315789473 | 0_684210526315789473 | 0                |
     And treasury balance is $0
     And oracle price
       | Currency | Price |
@@ -342,13 +342,13 @@ Feature: Margin Protocol
       | Alice | $10100 | $1520       | 0_664473684210526316 | $8580       | $5100         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_239024390243902439 | 0_239024390243902439 | 0                |
+      | 0_322368421052631578 | 0_322368421052631578 | 0                |
     And margin liquidity pool margin call
       | Result   |
       | SafePool |
     And oracle price
       | Currency | Price |
-      | FEUR     | $4.3  |
+      | FEUR     | $4.5  |
     And margin liquidity pool margin call
       | Result |
       | Ok     |
@@ -363,7 +363,7 @@ Feature: Margin Protocol
       | Alice | $14600 | $1520       | 0_960526315789473684 | $13080      | $9600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_016000000000000000 | 0_016000000000000000 | $4600            |
+      | 0_026315789473684210 | 0_026315789473684210 | $2640            |
     And margin liquidity pool liquidate
       | Result |
       | Ok     |
@@ -431,7 +431,7 @@ Feature: Margin Protocol
       | Bob   | $7920  | 2945_999999999999998800 | 0_268839103869653768 | 4974_000000000000001200 | $-1080        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_475111111111111111 | 0_475111111111111111 | 0                |
+      | 0_479264738847791975 | 0_479264738847791975 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $3.1  |
@@ -452,7 +452,7 @@ Feature: Margin Protocol
       | Bob   | 9483_999999999999999600 | $0                      | MaxValue             | 9483_999999999999999600 | $0            |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_955980392156862745 | 0_955980392156862745 | 0                |
+      | 0_968177530655810951 | 0_968177530655810951 | 0                |
     And margin liquidity is 19516_000000000000000400
     And oracle price
       | Currency | Price |
@@ -474,7 +474,7 @@ Feature: Margin Protocol
       | Bob   | 9363_999999999999999600 | $287                   | 1_631358885017421603 | 9076_999999999999999600 | $-120                  |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 1_843474400710269311 | 1_843474400710269311 | 0                |
+      | 1_930085487564177643 | 1_930085487564177643 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $2.8  |
@@ -625,7 +625,7 @@ Feature: Margin Protocol
       | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_693333333333333333 | 0_693333333333333333 | 0                |
+      | 0_684210526315789473 | 0_684210526315789473 | 0                |
     And treasury balance is $0
     And oracle price
       | Currency | Price |
@@ -635,7 +635,7 @@ Feature: Margin Protocol
       | Alice | $1100  | $1520       | 0_072368421052631579 | $-420       | $-3900        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 1_208695652173913043 | 1_208695652173913043 | 0                |
+      | 0_914473684210526315 | 0_914473684210526315 | 0                |
     And margin trader margin call
       | Name  | Result |
       | Alice | Ok     |
@@ -659,7 +659,7 @@ Feature: Margin Protocol
       | Alice | $7600  | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_411111111111111111 | 0_411111111111111111 | $1600            |
+      | 0_486842105263157894 | 0_486842105263157894 | $200             |
     And margin liquidity pool margin call
       | Result |
       | Ok     |
@@ -686,7 +686,7 @@ Feature: Margin Protocol
       | Alice | $7600  | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_411111111111111111 | 0_411111111111111111 | 0                |
+      | 0_486842105263157894 | 0_486842105263157894 | 0                |
 
   Scenario: margin trader owning and repayment
     Given accounts
@@ -735,7 +735,7 @@ Feature: Margin Protocol
       | Alice | $4400  | $3030       | 0_145214521452145215 | $1370       | $-600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_353333333333333333 | 0_353333333333333333 | 0                |
+      | 0_349834983498349834 | 0_349834983498349834 | 0                |
     And oracle price
       | Currency | Price |
       | FEUR     | $2    |
