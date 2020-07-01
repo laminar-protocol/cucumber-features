@@ -291,94 +291,6 @@ Feature: Margin Protocol
       | MaxValue | MaxValue | 0                |
     Then margin liquidity is $15000
 
-  Scenario: margin liquidity pool liquidate
-    Given accounts
-      | Name  | Amount  |
-      | Pool  | $10 000 |
-      | Alice | $10 000 |
-    And margin create liquidity pool
-    And margin deposit liquidity
-      | Name | Amount  |
-      | Pool | $10 000 |
-    And margin deposit
-      | Name  | Amount |
-      | Alice | $5 000 |
-    And oracle price
-      | Currency | Price |
-      | FEUR     | $3    |
-    And margin spread
-      | Pair   | Value |
-      | EURUSD | $0.04 |
-    And margin set accumulate
-      | Pair   | Frequency | Offset |
-      | EURUSD | 10min     | 1min   |
-    And margin set min leveraged amount to $100
-    And margin set default min leveraged amount to $100
-    And margin set swap rate
-      | Pair   | Long | Short |
-      | EURUSD | -1%  | 1%    |
-    And margin enable trading pair EURUSD
-    And margin set risk threshold(margin_call, stop_out)
-      | Pair   | Trader   | ENP        | ELL        |
-      | EURUSD | (3%, 1%) | (20%, 10%) | (20%, 10%) |
-    When open positions
-      | Name  | Pair   | Leverage | Amount | Price |
-      | Alice | EURUSD | Long 10  | $5000  | $4    |
-    Then margin balances are
-      | Name  | Free  | Margin |
-      | Alice | $5000 | $5000  |
-    Then margin trader info are
-      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
-    Then margin pool info are
-      | ENP                  | ELL                  | Required Deposit |
-      | 0_684210526315789473 | 0_684210526315789473 | 0                |
-    And treasury balance is $0
-    And oracle price
-      | Currency | Price |
-      | FEUR     | $4.1  |
-    Then margin trader info are
-      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $10100 | $1520       | 0_664473684210526316 | $8580       | $5100         |
-    Then margin pool info are
-      | ENP                  | ELL                  | Required Deposit |
-      | 0_322368421052631578 | 0_322368421052631578 | 0                |
-    And margin liquidity pool margin call
-      | Result   |
-      | SafePool |
-    And oracle price
-      | Currency | Price |
-      | FEUR     | $4.5  |
-    And margin liquidity pool margin call
-      | Result |
-      | Ok     |
-    And margin liquidity pool liquidate
-      | Result                  |
-      | NotReachedRiskThreshold |
-    And oracle price
-      | Currency | Price |
-      | FEUR     | $5.0  |
-    Then margin trader info are
-      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $14600 | $1520       | 0_960526315789473684 | $13080      | $9600         |
-    Then margin pool info are
-      | ENP                  | ELL                  | Required Deposit |
-      | 0_026315789473684210 | 0_026315789473684210 | $2640            |
-    And margin liquidity pool liquidate
-      | Result |
-      | Ok     |
-    Then margin balances are
-      | Name  | Free  | Margin |
-      | Alice | $5000 | $14600 |
-    Then margin trader info are
-      | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
-      | Alice | $14600 | $0          | MaxValue     | $14600      | $0            |
-    Then margin pool info are
-      | ENP      | ELL      | Required Deposit |
-      | MaxValue | MaxValue | 0                |
-    And margin liquidity is 0
-    And treasury balance is 400_000000000000000000
-
   Scenario: margin multiple users multiple currencies
     Given accounts
       | Name  | Amount  |
@@ -757,3 +669,91 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $4400  |
     And margin liquidity is $10_600
+
+  Scenario: margin liquidity pool liquidate
+    Given accounts
+      | Name  | Amount  |
+      | Pool  | $10 000 |
+      | Alice | $10 000 |
+    And margin create liquidity pool
+    And margin deposit liquidity
+      | Name | Amount  |
+      | Pool | $10 000 |
+    And margin deposit
+      | Name  | Amount |
+      | Alice | $5 000 |
+    And oracle price
+      | Currency | Price |
+      | FEUR     | $3    |
+    And margin spread
+      | Pair   | Value |
+      | EURUSD | $0.04 |
+    And margin set accumulate
+      | Pair   | Frequency | Offset |
+      | EURUSD | 10min     | 1min   |
+    And margin set min leveraged amount to $100
+    And margin set default min leveraged amount to $100
+    And margin set swap rate
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
+    And margin enable trading pair EURUSD
+    And margin set risk threshold(margin_call, stop_out)
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (20%, 10%) | (20%, 10%) |
+    When open positions
+      | Name  | Pair   | Leverage | Amount | Price |
+      | Alice | EURUSD | Long 10  | $5000  | $4    |
+    Then margin balances are
+      | Name  | Free  | Margin |
+      | Alice | $5000 | $5000  |
+    Then margin trader info are
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
+    Then margin pool info are
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_684210526315789473 | 0_684210526315789473 | 0                |
+    And treasury balance is $0
+    And oracle price
+      | Currency | Price |
+      | FEUR     | $4.1  |
+    Then margin trader info are
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $10100 | $1520       | 0_664473684210526316 | $8580       | $5100         |
+    Then margin pool info are
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_322368421052631578 | 0_322368421052631578 | 0                |
+    And margin liquidity pool margin call
+      | Result   |
+      | SafePool |
+    And oracle price
+      | Currency | Price |
+      | FEUR     | $4.5  |
+    And margin liquidity pool margin call
+      | Result |
+      | Ok     |
+    And margin liquidity pool liquidate
+      | Result                  |
+      | NotReachedRiskThreshold |
+    And oracle price
+      | Currency | Price |
+      | FEUR     | $5.0  |
+    Then margin trader info are
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $14600 | $1520       | 0_960526315789473684 | $13080      | $9600         |
+    Then margin pool info are
+      | ENP                  | ELL                  | Required Deposit |
+      | 0_026315789473684210 | 0_026315789473684210 | $4600            |
+    And margin liquidity pool liquidate
+      | Result |
+      | Ok     |
+    Then margin balances are
+      | Name  | Free  | Margin |
+      | Alice | $5000 | $14600 |
+    Then margin trader info are
+      | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
+      | Alice | $14600 | $0          | MaxValue     | $14600      | $0            |
+    Then margin pool info are
+      | ENP      | ELL      | Required Deposit |
+      | MaxValue | MaxValue | 0                |
+    And margin liquidity is 0
+    And treasury balance is 400_000000000000000000
