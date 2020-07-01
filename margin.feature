@@ -21,20 +21,20 @@ Feature: Margin Protocol
       | Bob   | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
-      | Bob   | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
+      | Bob   | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2     |
-      | FJPY      | $1     |
+      | Currency | Price |
+      | FEUR     | $2    |
+      | FJPY     | $1    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.02 |
-      | JPYUSD  | $0.01 |
+      | Pair   | Value |
+      | EURUSD | $0.02 |
+      | JPYUSD | $0.01 |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
@@ -44,9 +44,9 @@ Feature: Margin Protocol
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
-      | JPYUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | JPYUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -56,9 +56,9 @@ Feature: Margin Protocol
       | Alice | $5000 | $5000  |
       | Bob   | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4800   | $1010       | 0_475247524752475248 | $3790       | $-200         |
-      | Bob   | $4900   | $101        | 0_970297029702970297 | $4799       | $-100         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4800  | $1010       | 0_475247524752475248 | $3790       | $-200         |
+      | Bob   | $4900  | $101        | 0_970297029702970297 | $4799       | $-100         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_686666666666666667 | 0_686666666666666667 | 0                |
@@ -71,9 +71,9 @@ Feature: Margin Protocol
       | Alice | $5000 | $4800  |
       | Bob   | $5000 | $4900  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level | Free Margin | Unrealized PL |
-      | Alice | $4800   | $0          | MaxValue     | $4800       | $0            |
-      | Bob   | $4900   | $0          | MaxValue     | $4900       | $0            |
+      | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
+      | Alice | $4800  | $0          | MaxValue     | $4800       | $0            |
+      | Bob   | $4900  | $0          | MaxValue     | $4900       | $0            |
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
@@ -94,29 +94,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.03 |
+      | Pair   | Value |
+      | EURUSD | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -124,14 +124,14 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_686666666666666667 | 0_686666666666666667 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $4     |
+      | Currency | Price |
+      | FEUR     | $4    |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $2    |
@@ -139,8 +139,8 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $9700  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level | Free Margin | Unrealized PL |
-      | Alice | $9700   | $0          | MaxValue     | $9700       | $0            |
+      | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
+      | Alice | $9700  | $0          | MaxValue     | $9700       | $0            |
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
@@ -153,29 +153,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.03 |
+      | Pair   | Value |
+      | EURUSD | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -183,14 +183,14 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_686666666666666667 | 0_686666666666666667 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.8   |
+      | Currency | Price |
+      | FEUR     | $2.8  |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $2    |
@@ -198,8 +198,8 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $3700  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level | Free Margin | Unrealized PL |
-      | Alice | $3700   | $0          | MaxValue     | $3700       | $0            |
+      | Name  | Equity | Margin Held | Margin Level | Free Margin | Unrealized PL |
+      | Alice | $3700  | $0          | MaxValue     | $3700       | $0            |
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
@@ -212,29 +212,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.03 |
+      | Pair   | Value |
+      | EURUSD | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -242,20 +242,20 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4700   | $1515       | 0_310231023102310231 | $3185       | $-300         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4700  | $1515       | 0_310231023102310231 | $3185       | $-300         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_686666666666666667 | 0_686666666666666667 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.2   |
+      | Currency | Price |
+      | FEUR     | $2.2  |
     And margin trader margin call
       | Name  | Result     |
       | Alice | SafeTrader |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.1   |
+      | Currency | Price |
+      | FEUR     | $2.1  |
     Then margin trader info are
       | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
       | Alice | $200   | $1515       | 0_013201320132013201 | $-1315      | $-4800        |
@@ -269,11 +269,11 @@ Feature: Margin Protocol
       | Name  | Result                  |
       | Alice | NotReachedRiskThreshold |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $1.9   |
+      | Currency | Price |
+      | FEUR     | $1.9  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $-800   | $1515       | -0_052805280528052805 | $-2315      | $-5800        |
+      | Name  | Equity | Margin Held | Margin Level          | Free Margin | Unrealized PL |
+      | Alice | $-800  | $1515       | -0_052805280528052805 | $-2315      | $-5800        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 1_663157894736842105 | 1_663157894736842105 | 0                |
@@ -298,29 +298,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.04 |
+      | Pair   | Value |
+      | EURUSD | $0.04 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (20%, 10%) | (20%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (20%, 10%) | (20%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -328,15 +328,15 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4600   | $1520       | 0_302631578947368421 | $3080       | $-400         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_693333333333333333 | 0_693333333333333333 | 0                |
     And treasury balance is $0
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $4.1   |
+      | Currency | Price |
+      | FEUR     | $4.1  |
     Then margin trader info are
       | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
       | Alice | $10100 | $1520       | 0_664473684210526316 | $8580       | $5100         |
@@ -347,8 +347,8 @@ Feature: Margin Protocol
       | Result   |
       | SafePool |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $4.3   |
+      | Currency | Price |
+      | FEUR     | $4.3  |
     And margin liquidity pool margin call
       | Result |
       | Ok     |
@@ -356,8 +356,8 @@ Feature: Margin Protocol
       | Result                  |
       | NotReachedRiskThreshold |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $5.0   |
+      | Currency | Price |
+      | FEUR     | $5.0  |
     Then margin trader info are
       | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
       | Alice | $14600 | $1520       | 0_960526315789473684 | $13080      | $9600         |
@@ -387,20 +387,20 @@ Feature: Margin Protocol
       | Bob   | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $20 000 |
+      | Name | Amount  |
+      | Pool | $20 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $9 000  |
-      | Bob   | $9 000  |
+      | Name  | Amount |
+      | Alice | $9 000 |
+      | Bob   | $9 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
-      | FJPY      | $5     |
+      | Currency | Price |
+      | FEUR     | $3    |
+      | FJPY     | $5    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.03 |
-      | JPYEUR  | $0.03 |
+      | Pair   | Value |
+      | EURUSD | $0.03 |
+      | JPYEUR | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
@@ -408,15 +408,15 @@ Feature: Margin Protocol
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
-      | JPYEUR  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
+      | JPYEUR | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYEUR
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
-      | JPYEUR  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | JPYEUR | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -426,22 +426,22 @@ Feature: Margin Protocol
       | Alice | $1000 | $9000  |
       | Bob   | $1000 | $9000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held             | Margin Level         | Free Margin             | Unrealized PL |
-      | Alice | $8700   | $1515                   | 0_574257425742574257 | $7185                   | $-300         |
-      | Bob   | $7920   | 2945_999999999999998800 | 0_268839103869653768 | 4974_000000000000001200 | $-1080        |
+      | Name  | Equity | Margin Held             | Margin Level         | Free Margin             | Unrealized PL |
+      | Alice | $8700  | $1515                   | 0_574257425742574257 | $7185                   | $-300         |
+      | Bob   | $7920  | 2945_999999999999998800 | 0_268839103869653768 | 4974_000000000000001200 | $-1080        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_475111111111111111 | 0_475111111111111111 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3.1   |
-      | FJPY      | $4.9   |
+      | Currency | Price |
+      | FEUR     | $3.1  |
+      | FJPY     | $4.9  |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | JPYEUR | Long 20  | $1000  | $4    |
     When close positions
-      | Name  | ID | Price |
-      | Bob   | 1  | $4    |
+      | Name | ID | Price |
+      | Bob  | 1  | $4    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $1000 | $9000                   |
@@ -455,15 +455,15 @@ Feature: Margin Protocol
       | 0_955980392156862745 | 0_955980392156862745 | 0                |
     And margin liquidity is 19516_000000000000000400
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.9   |
-      | FJPY      | $5.1   |
+      | Currency | Price |
+      | FEUR     | $2.9  |
+      | FJPY     | $5.1  |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $2    |
     When open positions
-      | Name  | Pair   | Leverage | Amount | Price |
-      | Bob   | EURUSD | Short 20 | $2000  | $2    |
+      | Name | Pair   | Leverage | Amount | Price |
+      | Bob  | EURUSD | Short 20 | $2000  | $2    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $1000 | $8200                   |
@@ -476,9 +476,9 @@ Feature: Margin Protocol
       | ENP                  | ELL                  | Required Deposit |
       | 1_843474400710269311 | 1_843474400710269311 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.8   |
-      | FJPY      | $5.2   |
+      | Currency | Price |
+      | FEUR     | $2.8  |
+      | FJPY     | $5.2  |
     When close positions
       | Name  | ID | Price |
       | Alice | 2  | $1    |
@@ -503,29 +503,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.02 |
+      | Pair   | Value |
+      | EURUSD | $0.02 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -571,7 +571,7 @@ Feature: Margin Protocol
     Then margin liquidity is 10604_755000000000000000
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
-      | Alice | EURUSD | Short 10  | $5000 | $2    |
+      | Alice | EURUSD | Short 10 | $5000  | $2    |
     Then margin balances are
       | Name  | Free  | Margin                  |
       | Alice | $5000 | 4395_245000000000000000 |
@@ -591,29 +591,29 @@ Feature: Margin Protocol
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice | $5 000  |
+      | Name  | Amount |
+      | Alice | $5 000 |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.04 |
+      | Pair   | Value |
+      | EURUSD | $0.04 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (8%, 5%) | (50%, 30%) | (50%, 30%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (8%, 5%) | (50%, 30%) | (50%, 30%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -621,18 +621,18 @@ Feature: Margin Protocol
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4600   | $1520       | 0_302631578947368421 | $3080       | $-400         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4600  | $1520       | 0_302631578947368421 | $3080       | $-400         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_693333333333333333 | 0_693333333333333333 | 0                |
     And treasury balance is $0
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2.3   |
+      | Currency | Price |
+      | FEUR     | $2.3  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL  |
-      | Alice | $1100   | $1520       | 0_072368421052631579 | $-420       | $-3900         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $1100  | $1520       | 0_072368421052631579 | $-420       | $-3900        |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 1_208695652173913043 | 1_208695652173913043 | 0                |
@@ -646,20 +646,20 @@ Feature: Margin Protocol
       | Name  | Result       |
       | Alice | UnsafeTrader |
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (5%, 3%) | (50%, 30%) | (50%, 30%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (5%, 3%) | (50%, 30%) | (50%, 30%) |
     And margin trader become safe
       | Name  | Result |
       | Alice | Ok     |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3.6   |
+      | Currency | Price |
+      | FEUR     | $3.6  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $7600   | $1520       | 0_500000000000000000 | $6080       | $2600         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $7600  | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
-      | 0_411111111111111111 | 0_411111111111111111 | $1600             |
+      | 0_411111111111111111 | 0_411111111111111111 | $1600            |
     And margin liquidity pool margin call
       | Result |
       | Ok     |
@@ -670,44 +670,44 @@ Feature: Margin Protocol
       | Result     |
       | UnsafePool |
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (5%, 3%) | (40%, 30%) | (50%, 30%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (5%, 3%) | (40%, 30%) | (50%, 30%) |
     And margin liquidity pool become safe
       | Result     |
       | UnsafePool |
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (5%, 3%) | (40%, 30%) | (40%, 30%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (5%, 3%) | (40%, 30%) | (40%, 30%) |
     And margin liquidity pool become safe
       | Result |
       | Ok     |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $7600   | $1520       | 0_500000000000000000 | $6080       | $2600         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $7600  | $1520       | 0_500000000000000000 | $6080       | $2600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_411111111111111111 | 0_411111111111111111 | 0                |
 
-Scenario: margin trader owning and repayment
+  Scenario: margin trader owning and repayment
     Given accounts
       | Name  | Amount  |
       | Pool  | $10 000 |
       | Alice | $10 000 |
     And margin create liquidity pool
     And margin deposit liquidity
-      | Name  | Amount  |
-      | Pool  | $10 000 |
+      | Name | Amount  |
+      | Pool | $10 000 |
     And margin deposit
-      | Name  | Amount  |
-      | Alice |  $5000  |
+      | Name  | Amount |
+      | Alice | $5000  |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $3     |
-      | FJPY      | $3     |
+      | Currency | Price |
+      | FEUR     | $3    |
+      | FJPY     | $3    |
     And margin spread
-      | Pair    | Value |
-      | EURUSD  | $0.03 |
-      | JPYUSD  | $0.03 |
+      | Pair   | Value |
+      | EURUSD | $0.03 |
+      | JPYUSD | $0.03 |
     And margin set accumulate
       | Pair   | Frequency | Offset |
       | EURUSD | 10min     | 1min   |
@@ -715,14 +715,14 @@ Scenario: margin trader owning and repayment
     And margin set min leveraged amount to $100
     And margin set default min leveraged amount to $100
     And margin set swap rate
-      | Pair    | Long | Short |
-      | EURUSD  | -1%  | 1%    |
-      | JPYUSD  | -1%  | 1%    |
+      | Pair   | Long | Short |
+      | EURUSD | -1%  | 1%    |
+      | JPYUSD | -1%  | 1%    |
     And margin enable trading pair EURUSD
     And margin enable trading pair JPYUSD
     And margin set risk threshold(margin_call, stop_out)
-      | Pair    | Trader   | ENP        | ELL        |
-      | EURUSD  | (3%, 1%) | (30%, 10%) | (30%, 10%) |
+      | Pair   | Trader   | ENP        | ELL        |
+      | EURUSD | (3%, 1%) | (30%, 10%) | (30%, 10%) |
     When open positions
       | Name  | Pair   | Leverage | Amount | Price |
       | Alice | EURUSD | Long 10  | $5000  | $4    |
@@ -731,15 +731,15 @@ Scenario: margin trader owning and repayment
       | Name  | Free  | Margin |
       | Alice | $5000 | $5000  |
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4400   | $3030       | 0_145214521452145215 | $1370       | $-600         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4400  | $3030       | 0_145214521452145215 | $1370       | $-600         |
     Then margin pool info are
       | ENP                  | ELL                  | Required Deposit |
       | 0_353333333333333333 | 0_353333333333333333 | 0                |
     And oracle price
-      | Currency  | Price  |
-      | FEUR      | $2     |
-      | FJPY      | $4     |
+      | Currency | Price |
+      | FEUR     | $2    |
+      | FJPY     | $4    |
     When close positions
       | Name  | ID | Price |
       | Alice | 0  | $1    |
@@ -748,8 +748,8 @@ Scenario: margin trader owning and repayment
       | Alice | $5000 | $-300  |
     And margin liquidity is $15_000
     Then margin trader info are
-      | Name  | Equity  | Margin Held | Margin Level         | Free Margin | Unrealized PL |
-      | Alice | $4400   | $1515       | 0_290429042904290429 | $2885       | $4700         |
+      | Name  | Equity | Margin Held | Margin Level         | Free Margin | Unrealized PL |
+      | Alice | $4400  | $1515       | 0_290429042904290429 | $2885       | $4700         |
     When close positions
       | Name  | ID | Price |
       | Alice | 1  | $3    |
