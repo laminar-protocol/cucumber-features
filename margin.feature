@@ -203,7 +203,7 @@ Feature: Margin Protocol
     Then margin pool info are
       | ENP      | ELL      | Required Deposit |
       | MaxValue | MaxValue | 0                |
-    And margin liquidity is $11 300
+    And margin liquidity is $11300
 
   Scenario: margin trader liquidate
     Given accounts
